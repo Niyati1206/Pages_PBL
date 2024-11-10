@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+    <script>
+        function validateSignUpForm() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@somaiya\.edu$/;
+            const passwordPattern = /.{8,}/;
+
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid organization email (e.g., name@somaiya.edu).");
+                return false;
+            }
+
+            if (!passwordPattern.test(password)) {
+                alert("Password must be at least 8 characters.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Teacher Registration</div>
+        <div class="content">
+            <form action="/signup" method="POST" onsubmit="return validateSignUpForm()">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" name="full_name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Department</span>
+                        <select name="dept" required>
+                            <option selected disabled>Choose Department</option>
+                            <option>Computer Department</option>
+                            <option>Information Technology Department</option>
+                            <option>Electronics Department</option>
+                            <option>Artificial Intelligence and Data Science Department</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Organization Email</span>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" minlength="8" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+                <div id="create-account-wrap">
+                    <p>Already have an account? <a href="/login">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
